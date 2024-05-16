@@ -1,6 +1,7 @@
-// Custom Store Management System kinda like Redux Store!
-// Because Context API is only good for low frequency state updates and is not
+// custom store management system kinda like redux store!
+// because context api is only good for low frequency state updates and is not
 // optimized.
+
 import { useState, useEffect } from 'react';
 
 // Manage state globally with JS and React
@@ -25,7 +26,7 @@ export const useStore = () => {
     listeners.push(setState);
 
     return () => {
-      listeners = listeners.filter((listnr) => listnr !== setState);
+      listeners = listeners.filter((li) => li !== setState);
     };
   }, [setState]);
 
@@ -34,8 +35,7 @@ export const useStore = () => {
 
 export const initStore = (userActions, initialState) => {
   if (initialState) {
-    globalState = { ...globalState, initialState };
+    globalState = { ...globalState, ...initialState };
   }
-
   actions = { ...actions, ...userActions };
 };
